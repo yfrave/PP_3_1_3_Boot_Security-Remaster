@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <title>Spring Security Example</title>
+</head>
+<body>
+<h1>Welcome to Index PAGE!</h1>
+<br><br>
+<div th:each="role: ${user.getRoles()}" th:if ="${role.toString()}=='ADMIN'">
+    <button type="submit"><a href="/admin">Admin menu</a></button>
+</div>
+<br><br>
+<div th:each="role: ${user.getRoles()}" th:if ="${role.toString()}=='USER'">
+    <button type="submit"><a href="/user">Personal Area</a></button>
+</div>
+<br><br>
+<form action="/logout" method="POST">
+    <button type="submit">logout</button>
+</form>
+
+</body>
+</html>
